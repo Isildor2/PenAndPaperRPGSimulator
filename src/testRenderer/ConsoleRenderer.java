@@ -1,9 +1,9 @@
 package testRenderer;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,36 +26,40 @@ public class ConsoleRenderer {
 	public void showOnScreen(Map map) {
 		JFrame window=new JFrame();
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		GridLayout gl=new GridLayout(20,20);
+		GridLayout gl=new GridLayout(map.getHeight(),map.getWidth());
 		JPanel pl=new JPanel(gl);
-		pl.setBackground(Color.DARK_GRAY);
+		pl.setBackground(Color.WHITE);
 		for (int i=0;i<map.getHeight();i++) {
 			for (int j=0;j<map.getWidth();j++) {
 				JLabel p=new JLabel();
-				switch (map.getMap()[i][j].getType()) {
+				switch (map.getMap()[j][i].getType()) {
 				case 0:
 					p.setForeground(Color.BLUE);
+					p.setBackground(Color.BLUE);
 					break;
 				case 1:
 					p.setForeground(Color.GREEN);
+					p.setBackground(Color.GREEN);
 					break;
 				case 2:
-					p.setForeground(Color.LIGHT_GRAY);
+					p.setForeground(new Color(24,107,46));
+					p.setBackground(new Color(24,107,46));
 					break;
 				case 3:
 					p.setForeground(Color.GRAY);
+					p.setBackground(Color.GRAY);
 					break;
 				}
-				p.setText(""+map.getMap()[i][j].getType());
+				p.setText(""+map.getMap()[j][i].getResourceType());
 				p.setOpaque(true);
-				p.setMinimumSize(new Dimension(20,20));
 				pl.add(p);
+				
 			}
 		}
-		window.setSize(400, 400);
+		window.setSize(12*map.getWidth(),
+				12*map.getHeight());
 		window.add(pl);
 		window.setResizable(false);
 		window.setVisible(true);
-		System.out.println(pl.getComponentCount());
 	}
 }

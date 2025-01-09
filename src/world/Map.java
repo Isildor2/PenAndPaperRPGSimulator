@@ -5,6 +5,14 @@ public class Map {
 	//to be used for map creation (todo)
 	private int seed;
 	
+	/*
+	 * How the map is structured:
+	 * Map holds seed and tiles for now
+	 * width of map=number of 1d arrays in the 2d array (map.length())
+	 * height of map=length of the 1d arrays (map[x].length())
+	 */
+	
+	
 	public Map() {}
 	public Map(int width,int height) {
 		map=new Tile[width][height];
