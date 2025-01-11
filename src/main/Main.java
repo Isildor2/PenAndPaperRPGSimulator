@@ -16,7 +16,7 @@ public class Main {
 		LandCreator creator=new LandCreator();
 		OceanCreator creatorW=new OceanCreator();
 		BiomeCreator creatorB=new BiomeCreator();
-		Map tm=new Map(120,75);
+		Map tm=new Map(200,150);
 		creator.createLandMass(0,tm);
 		
 		int MOD=3;
@@ -78,11 +78,11 @@ public class Main {
 		creator.createLandMass(tm, 3, 45, 44,false);
 		creator.createLandMass(tm, 6, 70, 52,false);
 		*/
-		int rGOC=130;
+		int rGOC=380;
 		Random random=new Random();
 		ArrayList<int[]> rGA=new ArrayList<>();
 		for (int i=0;i<rGOC;i++) {
-			rGA.add(new int[]{random.nextInt(0,120),random.nextInt(0,75)});
+			rGA.add(new int[]{random.nextInt(0,tm.getWidth()),random.nextInt(0,tm.getHeight())});
 		}
 		for (int i=0;i<rGA.size();i++) {
 			creator.createLandMass(tm, random.nextInt(0,ShapeStorage.shapes2D.length), rGA.get(i)[0], rGA.get(i)[1], false);
@@ -136,7 +136,7 @@ public class Main {
 				}
 			}
 		}
-		System.out.println(((l+f+m)/(120*75))+" :land vs map");
+		System.out.println(((l+f+m)/(map.getWidth()*map.getHeight()))+" :land vs map");
 		System.out.println((f/(l+f+m))+" :forest vs land");
 		System.out.println(m/(l+f+m)+" :mountain vs land");
 	}

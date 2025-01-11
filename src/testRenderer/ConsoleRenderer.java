@@ -1,9 +1,9 @@
 package testRenderer;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
-import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -34,32 +34,32 @@ public class ConsoleRenderer {
 				JLabel p=new JLabel();
 				switch (map.getMap()[j][i].getType()) {
 				case 0:
-					p.setForeground(Color.BLUE);
+					//p.setForeground(Color.BLUE);
 					p.setBackground(Color.BLUE);
 					break;
 				case 1:
-					p.setForeground(Color.GREEN);
+					//p.setForeground(Color.GREEN);
 					p.setBackground(Color.GREEN);
 					break;
 				case 2:
-					p.setForeground(new Color(24,107,46));
+					//p.setForeground(new Color(24,107,46));
 					p.setBackground(new Color(24,107,46));
 					break;
 				case 3:
-					p.setForeground(Color.GRAY);
+					//p.setForeground(Color.GRAY);
 					p.setBackground(Color.GRAY);
 					break;
 				}
-				p.setText(""+map.getMap()[j][i].getResourceType());
+				//p.setText(""+map.getMap()[j][i].getResourceType());
 				p.setOpaque(true);
 				pl.add(p);
 				
 			}
 		}
-		window.setSize(12*map.getWidth(),
-				12*map.getHeight());
+		pl.setSize(6*map.getWidth(),6*map.getHeight());
 		window.add(pl);
-		window.setResizable(false);
+		window.setMinimumSize(new Dimension(pl.getWidth(),pl.getHeight()));
+		window.setResizable(true);
 		window.setVisible(true);
 	}
 }

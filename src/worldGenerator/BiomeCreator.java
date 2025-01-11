@@ -1,5 +1,6 @@
 package worldGenerator;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import world.Map;
@@ -8,13 +9,23 @@ import world.Tile;
 public class BiomeCreator {
 	public void spreadBiomes(Map map) {
 		Random r=new Random();
-		
+		int rGOC=250;
+		Random random=new Random();
+		ArrayList<int[]> rGA=new ArrayList<>();
+		for (int i=0;i<rGOC;i++) {
+			rGA.add(new int[]{random.nextInt(0,map.getWidth()),random.nextInt(0,map.getHeight())});
+		}
+		for (int i=0;i<rGA.size();i++) {
+			if (map.getMap()[rGA.get(i)[0]][rGA.get(i)[1]].getResourceType()==1) {
+				map.getMap()[rGA.get(i)[0]][rGA.get(i)[1]].setResourceType(2);
+			}
+		}
 		for (int i=0;i<map.getHeight();i++) {
 			for (int j=0;j<map.getWidth();j++) {
 				if (map.getMap()[j][i].getResourceType()==3) {
 					createMountain(map,r.nextInt(0,ShapeStorage.shapes2D.length),j,i,r.nextInt(1,3));
 				} else if(map.getMap()[j][i].getResourceType()==2) {
-					createForest(map,r.nextInt(0,ShapeStorage.shapes2D.length),j,i,r.nextInt(1,3));
+					createForest(map,r.nextInt(2,ShapeStorage.shapes2D.length),j,i,r.nextInt(1,3));
 				}
 			}
 		}
